@@ -2,9 +2,28 @@ import {
   Linkedin,
   Github,
   Instagram,
-  Youtube,
   ExternalLink
 } from "lucide-react";
+import { SVGProps } from "react"; // Importation de SVGProps pour les propriétés SVG
+
+// Définition du type pour les props
+interface WhatsAppIconProps extends SVGProps<SVGSVGElement> {
+  className?: string; // `className` est optionnel
+}
+
+const WhatsAppIcon: React.FC<WhatsAppIconProps> = ({ className, ...props }) => (
+  <svg
+    className={className}
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M20.52 3.48a11.76 11.76 0 00-16.64 0A11.76 11.76 0 000 12a11.85 11.85 0 002 6.64L0 24l5.36-2a11.85 11.85 0 006.64 2 11.76 11.76 0 008.36-3.48 11.76 11.76 0 000-16.64zM12 21.6a9.6 9.6 0 01-5.16-1.44l-.36-.24-3.96 1.44 1.44-3.96-.24-.36A9.6 9.6 0 0112 2.4a9.6 9.6 0 019.6 9.6c0 5.28-4.32 9.6-9.6 9.6zm4.32-7.2c-.24-.12-1.44-.72-1.68-.84-.24-.12-.36-.12-.6.12s-.72.84-.84 1.08c-.12.12-.24.24-.48.12a7.12 7.12 0 01-2.52-1.56 8.69 8.69 0 01-1.56-2.52c-.12-.24 0-.36.12-.48.12-.12.24-.24.36-.36.12-.12.12-.24.24-.36.12-.12.12-.24.24-.36.12-.12 0-.24 0-.36s-.6-1.68-.84-2.28c-.12-.6-.36-.6-.6-.6h-.6c-.24 0-.6.12-.84.36-.24.12-.84.84-.84 2.04s.84 2.4.96 2.64c.12.24 1.68 2.76 4.08 4.08 2.4 1.32 2.88 1.32 3.36 1.2.48 0 1.68-.72 1.92-1.44s.24-1.32.12-1.44c-.12-.12-.24-.24-.36-.36z" />
+  </svg>
+);
 
 const socialLinks = [
   {
@@ -22,18 +41,18 @@ const socialLinks = [
     displayName: "Instagram",
     subText: "bogaange167",
     icon: Instagram,
-    url: "https://www.instagram.com/bogaange167?igsh=MXB5bnNzbmQzbzNnOA== ",
+    url: "https://www.instagram.com/bogaange167",
     color: "#E4405F",
     gradient: "from-[#833AB4] via-[#E4405F] to-[#FCAF45]"
   },
   {
-    name: "YouTube",
-    displayName: "Youtube", 
+    name: "WhatsApp",
+    displayName: "WhatsApp",
     subText: "",
-    icon: Youtube,
-    url: "#",
-    color: "#FF0000",
-    gradient: "from-[#FF0000] to-[#CC0000]"
+    icon: WhatsAppIcon, // ✅ Maintenant, cette référence fonctionne
+    url: "https://wa.me/qr/ODT5SIBULDJRG1",
+    color: "#25D366",
+    gradient: "from-[#25D366] to-[#128C7E]"
   },
   {
     name: "GitHub",
