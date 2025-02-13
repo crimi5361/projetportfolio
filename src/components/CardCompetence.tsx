@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { FaLinux, FaWindows, FaPython, FaGit, FaGithub, FaGitlab, FaJs,  } from 'react-icons/fa';
 import { SiDjango, SiNextdotjs, SiFlutter, SiExpress, SiPostgresql, SiMysql, SiMongodb, SiDart, SiReact, SiTypescript, SiVercel, SiHeroku , SiPythonanywhere} from 'react-icons/si';

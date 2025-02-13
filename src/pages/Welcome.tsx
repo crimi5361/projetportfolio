@@ -5,30 +5,6 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 // Composant pour l'effet d'écriture
-const TypewriterEffect = ({ text }) => {
-  const [displayText, setDisplayText] = useState("");
-
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= text.length) {
-        setDisplayText(text.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 260);
-
-    return () => clearInterval(timer);
-  }, [text]);
-
-  return (
-    <span className="inline-block">
-      {displayText}
-      <span className="animate-pulse">|</span>
-    </span>
-  );
-};
 
 // Effet de fond animé
 const BackgroundEffect = () => (

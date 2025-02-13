@@ -6,6 +6,7 @@ const Background = ({ animationSpeed = 100, xRange = 340, yRange = 40 }) => {
   const blobRefs = useRef([]);
 
   // Positions initiales des blobs, utilisées pour calculer leurs déplacements.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const initialPositions = [
     { x: -4, y: 0 },
     { x: -4, y: 0 },
@@ -55,7 +56,7 @@ const Background = ({ animationSpeed = 100, xRange = 340, yRange = 40 }) => {
       window.removeEventListener("scroll", handleScroll); // Supprime l'écouteur de défilement.
       cancelAnimationFrame(requestId); // Annule l'animation en cours.
     };
-  }, [animationSpeed, xRange, yRange]); // Dépendances pour recalculer en cas de modification des props.
+  }, [animationSpeed, initialPositions, xRange, yRange]); // Dépendances pour recalculer en cas de modification des props.
 
   return (
     <div className="fixed inset-0">
