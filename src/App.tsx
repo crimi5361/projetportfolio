@@ -8,7 +8,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import ContactPage from "./pages/ContactPage";
 import Portfolio from "./pages/Portfolio";
-import CardProjet from "./components/CardProjet";
 import ProjectDetails from "./components/ProjectDetails";
 
 function App() {
