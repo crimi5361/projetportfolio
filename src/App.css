@@ -1,0 +1,202 @@
+/* Importation de la police Poppins depuis Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* Inclusion des styles de base, composants et utilitaires de Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Réinitialisation des marges, des paddings et des propriétés de box-sizing pour tous les éléments */
+* {
+	margin: 0; /* Supprime les marges par défaut */
+	padding: 0; /* Supprime les paddings par défaut */
+	box-sizing: border-box; /* Définit box-sizing pour inclure padding et border dans les dimensions des éléments */
+	font-family: "Poppins", serif; /* Applique la police Poppins à tous les éléments */
+	scroll-behavior: smooth; /* Rend le défilement fluide */
+	scrollbar-width: thin; /* Définit une barre de défilement fine (pour Firefox) */
+	scrollbar-color: rgba(181, 62, 218, 0.3) rgba(170, 35, 211, 0.356); /* Définit les couleurs de la barre de défilement (pour Firefox) */
+}
+
+/* Applique un style global au HTML et au body */
+html,
+body {
+	overflow-x: hidden; /* Désactive le défilement horizontal */
+	background: #05040a; /* Définit une couleur de fond sombre */
+	scroll-behavior: smooth !important; /* Assure un défilement fluide avec priorité élevée */
+}
+
+/* Définition d'une animation appelée blob */
+@keyframes blob {
+	0%, 100% {
+		transform: translateY(0); /* Aucun déplacement vertical au début et à la fin */
+	}
+	50% {
+		transform: translateY(-20px); /* Déplacement vertical vers le haut au milieu */
+	}
+}
+
+/* Ajoute l'animation blob à un élément */
+.animate-blob {
+	animation: blob 8s infinite; /* Applique l'animation blob avec une durée de 8 secondes, en boucle */
+}
+
+/* Ajoute un délai d'animation de 2 secondes */
+.animation-delay-2000 {
+	animation-delay: 2s; /* Délai avant le début de l'animation */
+}
+
+/* Ajoute un délai d'animation de 4 secondes */
+.animation-delay-4000 {
+	animation-delay: 4s; /* Délai avant le début de l'animation */
+}
+
+/* Style pour les barres de défilement (webkit uniquement) */
+::-webkit-scrollbar {
+	width: 8px; /* Largeur de la barre de défilement */
+	height: 8px; /* Hauteur de la barre de défilement */
+	background-color: transparent; /* Fond transparent */
+}
+
+/* Style pour la piste de la barre de défilement */
+::-webkit-scrollbar-track {
+	background: rgba(3, 0, 20, 0.4); /* Couleur de fond légèrement sombre */
+	backdrop-filter: blur(8px); /* Effet de flou */
+	-webkit-backdrop-filter: blur(8px); /* Compatibilité pour WebKit */
+	border: 1px solid rgba(99, 102, 241, 0.1); /* Bordure fine translucide */
+}
+
+/* Style pour le pouce de la barre de défilement */
+::-webkit-scrollbar-thumb {
+	background: rgba(99, 102, 241, 0.3); /* Couleur du pouce légèrement translucide */
+	backdrop-filter: blur(4px); /* Effet de flou léger */
+	-webkit-backdrop-filter: blur(4px); /* Compatibilité pour WebKit */
+	border-radius: 20px; /* Coins arrondis */
+	border: 1px solid rgba(255, 255, 255, 0.1); /* Bordure fine translucide */
+	box-shadow: 
+		inset 0 0 20px rgba(168, 85, 247, 0.2), /* Ombre interne douce */
+		0 0 10px rgba(99, 102, 241, 0.2); /* Ombre externe subtile */
+	transition: all 0.3s ease; /* Transition douce pour les changements d'état */
+}
+
+/* Style lorsque le pouce est survolé */
+::-webkit-scrollbar-thumb:hover {
+	background: rgba(99, 102, 241, 0.5); /* Couleur plus opaque */
+	border: 1px solid rgba(168, 85, 247, 0.3); /* Bordure plus visible */
+	box-shadow: 
+		inset 0 0 30px rgba(168, 85, 247, 0.3), /* Ombre interne plus intense */
+		0 0 15px rgba(99, 102, 241, 0.3); /* Ombre externe plus large */
+}
+
+/* Style lorsque le pouce est cliqué */
+::-webkit-scrollbar-thumb:active {
+	background: rgba(99, 102, 241, 0.6); /* Couleur encore plus opaque */
+	border: 1px solid rgba(168, 85, 247, 0.4); /* Bordure encore plus visible */
+	box-shadow: 
+		inset 0 0 40px rgba(168, 85, 247, 0.4), /* Ombre interne très intense */
+		0 0 20px rgba(99, 102, 241, 0.4); /* Ombre externe encore plus large */
+}
+
+/* Supprime l'arrière-plan dans le coin des barres de défilement */
+::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+/* Optimise les animations en précisant les propriétés à animer */
+[data-aos] {
+	will-change: transform, opacity !important;
+}
+
+/* Définition d'une animation appelée shine */
+@keyframes shine {
+	from {
+		left: -100%; /* Commence hors de l'élément à gauche */
+	}
+	to {
+		left: 200%; /* Termine hors de l'élément à droite */
+	}
+}
+
+/* Ajoute l'animation shine à un élément */
+.animate-shine {
+	animation: shine 1.5s ease-in-out infinite; /* Applique l'animation shine avec une durée de 1,5 seconde, en boucle */
+}
+
+
+  
+/*   @media (prefers-color-scheme: dark) {
+	::-webkit-scrollbar-track {
+	  background: rgba(3, 0, 20, 0.6);
+	}
+  } */
+
+
+/* 
+  .container {
+	width: 100%;
+	height: 100%;
+  }
+  
+  .main > div {
+	position: absolute;
+	will-change: transform;
+	border-radius: 50%;
+	background: lightcoral;
+	box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+	opacity: 0.6;
+  }
+  
+  .main > div:nth-child(1) {
+	width: 60px;
+	height: 60px;
+  }
+  
+  .main > div:nth-child(2) {
+	width: 125px;
+	height: 125px;
+  }
+  
+  .main > div:nth-child(3) {
+	width: 75px;
+	height: 75px;
+  }
+  
+  .main > div::after {
+	content: '';
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: rgba(255, 0, 0, 0.8);
+  }
+  
+  .main > div:nth-child(2)::after {
+	top: 35px;
+	left: 35px;
+	width: 35px;
+	height: 35px;
+  }
+  
+  .main > div:nth-child(3)::after {
+	top: 25px;
+	left: 25px;
+	width: 25px;
+	height: 25px;
+  }
+  
+  .main {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	filter: url('#blob');
+	overflow: hidden;
+	background: transparent;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+  } */
