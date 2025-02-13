@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3, } from "react-icons/fa";
+import { FaReact, FaNodeJs, FaHtml5, FaCss3, } from "react-icons/fa";
 import { SiExpress, SiFirebase, SiFlutter, SiJavascript } from "react-icons/si";
 
 const techIcons: { [key: string]: JSX.Element } = {
@@ -69,18 +69,19 @@ const ProjectDetails = ({ project, onClose }: { project: any; onClose: () => voi
           {/* Colonne droite - Diaporama d'images */}
           <div className="relative w-full">
   <div className="w-full min-h-[250px] md:h-64 overflow-hidden rounded-lg relative bg-gray-800">
-    <AnimatePresence mode="wait">
-      <motion.img
-        key={currentImage}
-        src={images[currentImage]}
-        alt={project.title}
-        className="w-full h-full object-contain absolute"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 1.05 }}
-        transition={{ duration: 0.8 }}
-      />
-    </AnimatePresence>
+  <AnimatePresence>
+  <motion.img
+    key={currentImage}
+    src={images[currentImage]}
+    alt={project.title}
+    className="w-full h-full object-contain absolute"
+    initial={{ opacity: 0, scale: 0.95 }}
+    animate={{ opacity: 1, scale: 1 }}
+    exit={{ opacity: 0, scale: 1.05 }}
+    transition={{ duration: 0.8 }}
+  />
+</AnimatePresence>
+
   </div>
 </div>
 

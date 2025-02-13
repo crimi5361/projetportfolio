@@ -12,7 +12,8 @@ const certifications = [
 
 const CardFormation = () => {
   // État pour suivre l'image sélectionnée dans la modal
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
 
   return (
     <motion.div 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactNode } from "react";
 import PropTypes from 'prop-types';
 import { AppBar, Tabs, Tab, Box } from '@mui/material';
 import { Code, Award, Boxes } from 'lucide-react';
@@ -12,20 +13,24 @@ import CardCompetence from '../components/CardCompetence';
  * Composant pour gérer le contenu affiché sous chaque onglet.
  * @param {Object} props - Les propriétés reçues par le composant.
  */
-function TabPanel({ children, value, index, ...other }: object) {
+interface TabPanelProps {
+  children?: ReactNode;
+  value: number;
+  index: number;
+  other?: object;
+}
+
+function TabPanel({ children, value, index, ...other }: TabPanelProps) {
   return (
     <div
-    // Définit un rôle ARIA pour l'accessibilité
-      hidden={value !== index} // Cache le panneau si ce n'est pas l'onglet sélectionné
-     
-      {...other} // Permet de transmettre d'autres propriétés
+      hidden={value !== index}
+      {...other} 
     >
-      {value === index && (
-        <Box sx={{ p: { xs: 1, sm: 3 } }}>{children}</Box>
-      )}
+      {value === index && <Box sx={{ p: { xs: 1, sm: 3 } }}>{children}</Box>}
     </div>
   );
 }
+
 
 // Définition des types des propriétés pour valider les données reçues
 TabPanel.propTypes = {
@@ -39,7 +44,7 @@ TabPanel.propTypes = {
  * @param {number} index - Index de l'onglet.
  * @returns {Object} - Propriétés ARIA pour l'onglet.
  */
-function a11yProps(index) {
+function a11yProps(index: number) {
   return {
     id: `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
@@ -55,7 +60,7 @@ const Portfolio = () => {
    * @param {Object} _event - Événement déclenché.
    * @param {number} newValue - Nouvelle valeur sélectionnée.
    */
-  const handleChange = (_event, newValue) => {
+  const handleChange = (_event: object, newValue: number) => {
     setValue(newValue); // Met à jour l'état avec la nouvelle valeur
   };
 
@@ -129,13 +134,13 @@ const Portfolio = () => {
 
       {/* Contenu des onglets */}
       <TabPanel value={value} index={0}>
-        <CardProjet TechStackIcon={undefined} Language={undefined}/>
+        <CardProjet />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CardFormation TechStackIcon={undefined} Language={undefined} />
+        <CardFormation />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <CardCompetence TechStackIcon={undefined} Language={undefined} />
+        <CardCompetence  />
       </TabPanel>
     </Box>
   );

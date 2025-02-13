@@ -1,7 +1,19 @@
 import { useState } from "react";
 import ProjectDetails from "./ProjectDetails";
 
-const projects = [
+// Définition du type pour un projet
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  detail: string;
+  image: string;
+  images: string[];
+  technologies: string[];
+}
+
+// Données des projets
+const projects: Project[] = [
   {
     id: 1,
     title: "GED-IT-PARCK",
@@ -35,8 +47,8 @@ const projects = [
   {
     id: 3,
     title: "Restaurant",
-    description: " Mise en place d'un site de reervation de table pour un restaurant ",
-    detail:"Creation d'un site web  d'un restaurant de la place , permettant au clients de pouvoir visioner les menu de ce splendide restaurant et pouvoir reverser une table",
+    description: " Mise en place d'un site de réservation de table pour un restaurant ",
+    detail: "Création d'un site web d'un restaurant, permettant aux clients de pouvoir visionner les menus de ce splendide restaurant et pouvoir réserver une table.",
     image: "../assets/images/python/rest.jpg",
     images: [
       "../assets/images/python/rest.jpg",
@@ -44,33 +56,36 @@ const projects = [
       "../assets/images/python/rest3.jpg",
       "../assets/images/python/rest41.jpg",
       "../assets/images/python/rest5.jpg"
-
     ],
     technologies: ["html", "css", "js"]
   }
 ];
 
 const CardProjet = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  // Définir les états pour le projet sélectionné et le statut du modal
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = (project) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
+  // Fonction pour ouvrir le modal avec les détails du projet sélectionné
+  const openModal = (project: Project) => {
+    setSelectedProject(project); // Met à jour l'état du projet sélectionné
+    setIsModalOpen(true); // Ouvre le modal
   };
 
+  // Fonction pour fermer le modal
   const closeModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen(false); // Ferme le modal
   };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4 md:p-8">
+      {/* Affichage de chaque projet */}
       {projects.map((project) => (
         <div
           key={project.id}
           className="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer transform transition duration-300 hover:scale-105"
         >
-          {/* Image responsive */}
+          {/* Image du projet */}
           <img
             src={project.image}
             alt={project.title}
@@ -82,7 +97,7 @@ const CardProjet = () => {
             <h2 className="text-lg sm:text-xl font-bold text-center">{project.title}</h2>
             <p className="text-sm text-gray-300 text-center mt-2">{project.description}</p>
 
-            {/* Bouton Détails */}
+            {/* Bouton pour afficher les détails */}
             <button
               onClick={() => openModal(project)}
               className="mt-4 bg-purple-600 hover:bg-purple-700 px-3 py-2 sm:px-4 sm:py-2 rounded-lg transition-all duration-300"
@@ -93,8 +108,10 @@ const CardProjet = () => {
         </div>
       ))}
 
-      {/* Modal */}
-      {isModalOpen && <ProjectDetails project={selectedProject} onClose={closeModal} />}
+      {/* Modal pour afficher les détails du projet */}
+      {isModalOpen && selectedProject && (
+        <ProjectDetails project={selectedProject} onClose={closeModal} />
+      )}
     </div>
   );
 };

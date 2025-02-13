@@ -1,15 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Share2, User, Mail, MessageSquare, Send } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { Share2, User, MessageSquare, Send } from "lucide-react";
 import SocialLinks from "../components/SocialLinks";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Comentaire from "../components/Comentaire";
 import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 const ContactPage = () => {
-  const formRef = useRef(); // Référence du formulaire
-
+  const formRef = useRef<HTMLFormElement | null>(null); // Reference to the form
   const [formData, setFormData] = useState({
     email: "",
     message: "",
@@ -20,7 +19,7 @@ const ContactPage = () => {
     AOS.init({ once: false });
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -28,37 +27,49 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    const serviceID = "service_tef9c9n";
+    const templateID = "template_472lg1d";
+    const publicKey = "KRxeP6ClkaEaivx2D";
+
+    if (!formRef.current) {
+      console.error("Form reference is null");
+      setIsSubmitting(false);
+      return;
+    }
+
     try {
-      const serviceID = "service_tef9c9n";
-      const templateID = "template_472lg1d";
-      const publicKey = "KRxeP6ClkaEaivx2D";
-
-      // Utilisation de sendForm avec la référence du formulaire
-      const response = await emailjs.sendForm(
-        serviceID,
-        templateID,
-        formRef.current, 
-        publicKey
-      );
-
-      console.log("Email envoyé avec succès :", response);
-      alert("Succès ! Votre message a été envoyé.");
-
-      setFormData({
-        email: "",
-        message: "",
+      const response = await emailjs.sendForm(serviceID, templateID, formRef.current, publicKey);
+      console.log("Email sent successfully:", response);
+      // Show SweetAlert success notification
+      Swal.fire({
+        title: "Succès!",
+        text: "Votre message a été envoyé avec succès.",
+        icon: "success",
+        confirmButtonText: "OK",
       });
+
+  // ✅ Réinitialiser le formulaire après succès
+  setFormData({ email: "", message: "" });
+  formRef.current?.reset();
+
     } catch (error) {
-      console.error("Erreur lors de l'envoi :", error);
-      alert("Erreur ! Impossible d'envoyer le message.");
+      console.error("Error sending email:", error);
+      // Show SweetAlert error notification
+      Swal.fire({
+        title: "Oops!",
+        text: "Quelque chose a mal tourné. Veuillez réessayer plus tard.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     } finally {
       setIsSubmitting(false);
     }
   };
+
 
   return (
     <>

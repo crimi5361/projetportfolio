@@ -15,7 +15,11 @@ const BackgroundEffect = () => (
 );
 
 // Bouton d'icône avec animation
-const IconButton = ({ Icon }) => (
+interface IconButtonProps {
+  Icon: React.ElementType;
+}
+
+const IconButton: React.FC<IconButtonProps> = ({ Icon }) => (
   <div className="relative group hover:scale-110 transition-transform duration-300">
     <div className="absolute -inset-2 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full blur opacity-30 group-hover:opacity-75 transition duration-300" />
     <div className="relative p-2 sm:p-3 bg-black/50 backdrop-blur-sm rounded-full border border-white/10">
@@ -25,7 +29,11 @@ const IconButton = ({ Icon }) => (
 );
 
 // Composant principal pour l'écran de bienvenue
-const WelcomeScreen = ({ onLoadingComplete }) => {
+interface WelcomeScreenProps {
+  onLoadingComplete: () => void;
+}
+
+const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onLoadingComplete }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {

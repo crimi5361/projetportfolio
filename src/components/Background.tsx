@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 // Composant qui génère un arrière-plan animé avec des blobs et un motif en grille.
 const Background = ({ animationSpeed = 100, xRange = 340, yRange = 40 }) => {
   // Référence pour accéder aux éléments blob afin de les manipuler directement via JavaScript.
-  const blobRefs = useRef([]);
+  const blobRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Positions initiales des blobs, utilisées pour calculer leurs déplacements.
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -16,32 +16,29 @@ const Background = ({ animationSpeed = 100, xRange = 340, yRange = 40 }) => {
 
   // Effet secondaire pour gérer l'animation des blobs pendant le défilement.
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    let currentScroll = 0; // Position actuelle du défilement de la fenêtre.
     let requestId: number; // ID de l'animation pour la synchronisation avec `requestAnimationFrame`.
 
     // Fonction appelée lors du défilement pour animer les blobs.
     const handleScroll = () => {
       const newScroll = window.pageYOffset; // Récupère la nouvelle position de défilement.
-      currentScroll = newScroll; // Met à jour la position actuelle.
 
       // Parcours de chaque blob pour mettre à jour sa position.
       blobRefs.current.forEach((blob, index) => {
-        if (!blob) return; // Vérifie que le blob existe avant de l'utiliser.
+        if (blob) { // On vérifie que blob est bien un élément HTMLDivElement.
+          const initialPos = initialPositions[index]; // Position initiale du blob.
 
-        const initialPos = initialPositions[index]; // Position initiale du blob.
+          // Calcul des décalages en fonction de la position de défilement et de l'index du blob.
+          const xOffset =
+            Math.sin(newScroll / animationSpeed + index * 0.5) * xRange; // Déplacement horizontal.
+          const yOffset =
+            Math.cos(newScroll / animationSpeed + index * 0.5) * yRange; // Déplacement vertical.
 
-        // Calcul des décalages en fonction de la position de défilement et de l'index du blob.
-        const xOffset =
-          Math.sin(newScroll / animationSpeed + index * 0.5) * xRange; // Déplacement horizontal.
-        const yOffset =
-          Math.cos(newScroll / animationSpeed + index * 0.5) * yRange; // Déplacement vertical.
-
-        // Mise à jour de la position du blob avec une transformation CSS.
-        blob.style.setProperty(
-          "transform",
-          `translate(${initialPos.x + xOffset}px, ${initialPos.y + yOffset}px)`
-        );
+          // Mise à jour de la position du blob avec une transformation CSS.
+          blob.style.setProperty(
+            "transform",
+            `translate(${initialPos.x + xOffset}px, ${initialPos.y + yOffset}px)`
+          );
+        }
       });
 
       // Continue l'animation en synchronisation avec le rafraîchissement de l'écran.

@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion"; // Importation de la bibliothèque Framer Motion pour les animations
 import Typewriter from "typewriter-effect"; // Importation de Typewriter Effect pour l'effet de machine à écrire
 import {

@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { useNavigate } from "react-router-dom";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import {  ArrowRight, Code, Award, Globe } from "lucide-react";
@@ -22,13 +22,13 @@ const About = () => {
   
 
    // Références pour le scroll
-   const statsRef = useRef(null);
+   const statsRef = useRef<HTMLDivElement | null>(null); // Ensure proper typing
 
    const handleScrollDown = () => {
-     if (statsRef.current) {
-       statsRef.current.scrollIntoView({ behavior: "smooth" });
-     }
-   };
+    if (statsRef.current) {
+      statsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
    
   
 
@@ -126,12 +126,21 @@ const About = () => {
   );
 };
 
-const StatCard = ({ icon: Icon, value, label, description, onClick }) => {
+
+interface StatCardProps {
+  icon: React.ComponentType<{ className?: string }>;
+  value: string | number;
+  label: string;
+  description: string;
+  onClick?: () => void;
+}
+
+const StatCard: FC<StatCardProps> = ({ icon: Icon, value, label, description, onClick }) => {
   return (
     <div
       className="p-6 bg-gray-800 rounded-xl text-center shadow-lg border-2 border-transparent transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:border-purple-500 cursor-pointer"
       data-aos="fade-up"
-      onClick={onClick} // Défilement vers le bas
+      onClick={onClick}
     >
       <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-purple-500 rounded-full mx-auto mb-4 transform transition-transform duration-300 hover:rotate-12">
         <Icon className="text-white w-6 h-6 sm:w-8 sm:h-8" />
@@ -142,6 +151,5 @@ const StatCard = ({ icon: Icon, value, label, description, onClick }) => {
     </div>
   );
 };
-
 
 export default About;
