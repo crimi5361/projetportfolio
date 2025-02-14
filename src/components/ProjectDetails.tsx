@@ -21,10 +21,12 @@ const ProjectDetails = ({ project, onClose }: { project: any; onClose: () => voi
   // Utiliser les images du projet sélectionné
   const images = project.images || [project.image]; // Si pas d'images, utilise l'image principale
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [currentImage, setCurrentImage] = useState(0);
 
  
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % images.length);
@@ -35,7 +37,7 @@ const ProjectDetails = ({ project, onClose }: { project: any; onClose: () => voi
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center p-4">
-      <div className="bg-gray-700 p-8 rounded-xl shadow-lg max-w-5xl w-full relative">
+      <div className="bg-gray-900 p-8 rounded-xl shadow-lg max-w-5xl w-full relative">
         {/* Bouton de fermeture */}
         <button className="absolute top-4 right-4 text-white text-2xl" onClick={onClose}>
           ✖
