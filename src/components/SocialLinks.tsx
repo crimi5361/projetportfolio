@@ -106,7 +106,7 @@ const SocialLinks = () => {
         <span className="inline-block w-8 h-1 bg-indigo-500 rounded-full"></span>
         Connectez-vous avec moi
       </h3>
-
+<div className="flex flex-col gap-4">
       <a
   href={linkedIn?.url || "#"} // Fallback to "#" if undefined
   target="_blank"
@@ -142,7 +142,7 @@ const SocialLinks = () => {
 
     {/* Conteneur de texte */}
     {linkedIn && (
-  <div className="flex flex-col">
+  <div className="flex flex-col ">
     <span className="text-lg font-bold pt-[0.2rem] text-gray-200 tracking-tight leading-none group-hover:text-white transition-colors duration-300">
       {linkedIn.displayName}
     </span>
@@ -171,8 +171,8 @@ const SocialLinks = () => {
 </a>
 
 
-        {/* Deuxième rangée – Instagram et YouTube*/}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Deuxième rangée – Instagram et whatsapp*/}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[instagram, youtube].map((link) => (
             <a
               key={link.name}
@@ -221,7 +221,7 @@ const SocialLinks = () => {
         </div>
 
         {/*Troisième rangée – GitHub */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[github, tiktok].map((link) => (
             <a
               key={link.name}
@@ -269,6 +269,7 @@ const SocialLinks = () => {
           ))}
         </div>
       </div>
+    </div>
   
   );
 };
