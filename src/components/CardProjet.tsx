@@ -58,6 +58,21 @@ const projects: Project[] = [
       "../assets/images/python/rest5.jpg"
     ],
     technologies: ["html", "css", "js"]
+  },
+  {
+    id: 4,
+    title: "PerfectImmobilier",
+    description: " Mise en place d'un site de reervation, de location et de vente de maison , residence , RBNB ",
+    detail:"PerfectImmobilier est une plateforme en ligne dédiée à la réservation, la location et la vente de biens immobiliers, incluant maisons, résidences et logements type RBNB. L'objectif est d'offrir une expérience fluide et intuitive aux utilisateurs souhaitant trouver ou mettre en location un bien en toute simplicité.",
+    image: "../assets/images/perfectimmobilier/msedge_Op9OaeL6jH.jpg",
+    images: [
+      "../assets/images/perfectimmobilier/msedge_Op9OaeL6jH.jpg",
+      "../assets/images/perfectimmobilier/msedge_6zyDxt36OS.jpg",
+      "../assets/images/perfectimmobilier/msedge_pcmm2mD287.jpg",
+      "../assets/images/perfectimmobilier/msedge_UHZR6AcEfq.jpg",
+      "../assets/images/perfectimmobilier/msedge_YJ17SOS7DJ.jpg",
+    ],
+     technologies: ["React", "TypeScript", "Mongodb", "Prisma"]
   }
 ];
 

@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
-import { FaReact, FaNodeJs, FaHtml5, FaCss3, } from "react-icons/fa";
-import { SiExpress, SiFirebase, SiFlutter, SiJavascript } from "react-icons/si";
+import React, { useState, useEffect } from "react";
+import { FaReact, FaNodeJs,  FaHtml5, FaCss3,} from "react-icons/fa";
+import { SiExpress, SiFirebase, SiFlutter, SiJavascript, SiTypescript, SiMongodb, SiPrisma } from "react-icons/si";
 
 const techIcons: { [key: string]: JSX.Element } = {
   React: <FaReact className="text-blue-400 text-3xl" />,
@@ -12,7 +12,11 @@ const techIcons: { [key: string]: JSX.Element } = {
   // Python: <FaPython className="text--600 text-3xl" />,
   html: <FaHtml5 className="text-orange-500 text-3xl"/>,
   css: <FaCss3 className="text-purple-500 text-3xl"/>,
-  js: <SiJavascript className=" text-yellow-500 text-3xl"/>
+  js: <SiJavascript className=" text-yellow-500 text-3xl"/>,
+  TypeScript: <SiTypescript className=" text-blue-500 text-3xl"/>,
+  Mongodb:<SiMongodb className=" text-green-500 text-3xl"/>,
+  Prisma:<SiPrisma className=" text-Brown-500 text-3xl"/>,
+
 };
 
 const ProjectDetails = ({ project, onClose }: { project: any; onClose: () => void }) => {
