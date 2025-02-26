@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { FaReact, FaNodeJs,  FaHtml5, FaCss3,} from "react-icons/fa";
 import { SiExpress, SiFirebase, SiFlutter, SiJavascript, SiTypescript, SiMongodb, SiPrisma } from "react-icons/si";
 
