@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight, Github, ExternalLink, Code, Layers, Cpu } from "lucide-react";
+import { X, ArrowRight, Github, ExternalLink, Layers, } from "lucide-react";
 
 interface Project {
   id: number;
