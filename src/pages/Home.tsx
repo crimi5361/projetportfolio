@@ -57,7 +57,7 @@ const Home = () => {
           <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-blue-500 to-green-500 rounded-xl md:rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-200 animate-tilt"></div>
           <div className="relative">
             <motion.img
-              src="/crimi 2.jpg"
+              src="/crimi 1.jpg"
               alt="BOGA CHRISTIAN"
               className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-xl md:rounded-2xl object-cover border-2 md:border-4 border-gray-800 shadow-lg"
               whileHover={{ scale: 1.03 }}
