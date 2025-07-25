@@ -22,7 +22,7 @@ const Home = () => {
       <section 
         className="relative h-screen w-full flex items-center justify-center px-4 md:px-6 overflow-hidden"
         style={{
-          backgroundImage: "linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(0, 0, 0, 0.8)), url('/crimi 2.jpg')",
+          backgroundImage: "linear-gradient(to bottom, rgba(15, 23, 42, 0.9), rgba(0, 0, 0, 0.8)), url('https://i.pinimg.com/1200x/f2/8d/f8/f28df849d85b9d7638b01e5e5dea5729.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat"
