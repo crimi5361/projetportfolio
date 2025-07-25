@@ -208,7 +208,7 @@ const About = () => {
       >
         <StatCard 
           icon={Code} 
-          value="20+" 
+          value="10+" 
           label="Projets Réalisés" 
           description="Solutions web innovantes" 
           onClick={handleScrollDown} 
@@ -216,7 +216,7 @@ const About = () => {
         />
         <StatCard 
           icon={Award} 
-          value="10+" 
+          value="5+" 
           label="Certifications" 
           description="Compétences validées" 
           onClick={handleScrollDown} 
@@ -224,7 +224,7 @@ const About = () => {
         />
         <StatCard 
           icon={Globe} 
-          value="5+" 
+          value="1+" 
           label="Années d'Expérience" 
           description="Parcours enrichissant" 
           onClick={handleScrollDown} 
