@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Dialog } from "@headlessui/react";
 
 // Tableau contenant les chemins des images des certifications
-const certifications = [
-  "../assets/images/certification/certs1.jpg",
-  "../assets/images/certification/certs1.jpg" ,
-  "../assets/images/certification/certs1.jpg" 
+const certifications: any[] = [
+  // "../assets/images/certification/certs1.jpg",
+  // "../assets/images/certification/certs1.jpg" ,
+  // "../assets/images/certification/certs1.jpg" 
   // Autres images peuvent être ajoutées ici
 ];
 

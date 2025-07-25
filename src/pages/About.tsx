@@ -99,114 +99,109 @@ const About = () => {
         </motion.p>
       </motion.div>
 
-      {/* Intro Section with 3D flip effect */}
-      <motion.div 
-        className="flex flex-col md:flex-row items-center justify-between mt-10 gap-8 relative z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ staggerChildren: 0.3 }}
+      {/* Centered Profile Image */}
+      <motion.div
+        className="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-gray-800 rounded-full shadow-lg overflow-hidden mx-auto mt-10 relative"
+        initial={{ scale: 0.8, rotateY: 180 }}
+        animate={{ scale: 1, rotateY: 0 }}
+        transition={{ 
+          type: "spring",
+          stiffness: 100,
+          damping: 10,
+          delay: 0.3
+        }}
+        whileHover={{ scale: 1.05, y: -10 }}
       >
-        {/* Profile Image with floating effect */}
-        <motion.div
-          className="w-40 h-40 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-gray-800 rounded-full shadow-lg overflow-hidden mx-auto md:mx-0 relative"
-          initial={{ scale: 0.8, rotateY: 180 }}
-          animate={{ scale: 1, rotateY: 0 }}
-          transition={{ 
-            type: "spring",
-            stiffness: 100,
-            damping: 10,
-            delay: 0.3
-          }}
-          whileHover={{ scale: 1.05, y: -10 }}
-        >
-          <img
-            src={profileImage}
-            alt="Profile"
-            className="w-full h-full object-cover"
-          />
-          <motion.div 
-            className="absolute inset-0 rounded-full border-4 border-transparent hover:border-purple-500 transition-all duration-300"
-            whileHover={{ borderColor: "rgba(168, 85, 247, 0.5)" }}
-          />
-        </motion.div>
-
-        {/* Text Content with typing effect */}
+        <img
+          src={profileImage}
+          alt="Profile"
+          className="w-full h-full object-cover"
+        />
         <motion.div 
-          className="text-center md:text-left flex-1"
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
-            Bonjour, je suis{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 animate-gradient">
-              BOGA ANGE CHRISTIAN GUEMA
-            </span>
-          </h1>
-          
-          <motion.div 
-            className="mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
-              <span className="text-purple-400 font-medium">MIAGISTE</span>, je me distingue par une passion intense pour le développement web et mobile ainsi qu'un véritable intérêt pour l'innovation technologique. Mon parcours m'a permis de travailler sur des projets ambitieux où j'ai allié <span className="text-yellow-400">rigueur</span> et <span className="text-pink-400">créativité</span>.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            className="mb-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-          >
-            <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
-              Expert en <span className="text-blue-400">ReactJS</span>, <span className="text-teal-400">Flutter</span>, <span className="text-green-400">Node.js</span> et <span className="text-red-400">SQL Server</span>, je transforme des concepts complexes en solutions <span className="font-bold text-white">performantes</span> et <span className="font-bold text-white">accessibles</span>. Chaque projet est une nouvelle aventure où la technologie rencontre l'impact positif.
-            </p>
-          </motion.div>
-
-          {/* Buttons with cool hover effects */}
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 1.2 }}
-          >
-            <motion.button
-              className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 rounded-md text-white shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleDownload}
-            >
-              <span className="relative z-10 flex items-center">
-                <FaDownload className="mr-2" />
-                Télécharger le CV
-              </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-            </motion.button>
-
-            <motion.button 
-              className="flex items-center gap-2 border-2 border-purple-500 px-6 py-3 rounded-md text-purple-400 hover:text-white shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleScrollDown}
-            >
-              <span className="relative z-10 flex items-center">
-                <ArrowRight className="mr-2" />
-                Explorer mes Projets
-              </span>
-              <span className="absolute inset-0 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
-              <Rocket className="absolute right-4 opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-300" />
-            </motion.button>
-          </motion.div>
-        </motion.div>
+          className="absolute inset-0 rounded-full border-4 border-transparent hover:border-purple-500 transition-all duration-300"
+          whileHover={{ borderColor: "rgba(168, 85, 247, 0.5)" }}
+        />
       </motion.div>
 
-      {/* Stats Section with staggering cards */}
+      {/* Text Content Section */}
+      <div className="max-w-3xl mx-auto mt-10 px-4 relative z-10">
+        {/* Name Title */}
+        <motion.h1 
+          className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+        >
+          Bonjour, je suis{" "}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500 animate-gradient">
+            BOGA ANGE CHRISTIAN GUEMA
+          </span>
+        </motion.h1>
+        
+        {/* First Paragraph */}
+        <motion.div 
+          className="mb-8 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+            <span className="text-purple-400 font-medium">MIAGISTE</span>, je me distingue par une passion intense pour le développement web et mobile ainsi qu'un véritable intérêt pour l'innovation technologique. Mon parcours m'a permis de travailler sur des projets ambitieux où j'ai allié <span className="text-yellow-400">rigueur</span> et <span className="text-pink-400">créativité</span>.
+          </p>
+        </motion.div>
+
+        {/* Second Paragraph */}
+        <motion.div 
+          className="mb-8 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <p className="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed">
+            Expert en <span className="text-blue-400">ReactJS</span>, <span className="text-teal-400">Flutter</span>, <span className="text-green-400">Node.js</span> et <span className="text-red-400">SQL Server</span>, je transforme des concepts complexes en solutions <span className="font-bold text-white">performantes</span> et <span className="font-bold text-white">accessibles</span>. Chaque projet est une nouvelle aventure où la technologie rencontre l'impact positif.
+          </p>
+        </motion.div>
+
+        {/* Buttons */}
+        <motion.div 
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 1.2 }}
+        >
+          <motion.button
+            className="flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 px-6 py-3 rounded-md text-white shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleDownload}
+          >
+            <span className="relative z-10 flex items-center">
+              <FaDownload className="mr-2" />
+              Télécharger le CV
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </motion.button>
+
+          <motion.button 
+            className="flex items-center gap-2 border-2 border-purple-500 px-6 py-3 rounded-md text-purple-400 hover:text-white shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={handleScrollDown}
+          >
+            <span className="relative z-10 flex items-center">
+              <ArrowRight className="mr-2" />
+              Explorer mes Projets
+            </span>
+            <span className="absolute inset-0 bg-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
+            <Rocket className="absolute right-4 opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-300" />
+          </motion.button>
+        </motion.div>
+      </div>
+
+      {/* Stats Section */}
       <motion.div 
         ref={statsRef} 
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-20 relative z-10"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10 max-w-6xl mx-auto px-4 relative z-10"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5 }}
